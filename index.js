@@ -109,6 +109,9 @@ function watchify (b, opts) {
                 source: row.source,
                 deps: xtend({}, row.deps)
             };
+            if (!fwatchers[file]) {
+                watchFile(file);
+            }
             try {
                 var stats = fs.statSync(file);
             } catch (err) {}
